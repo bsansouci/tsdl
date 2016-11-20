@@ -36,6 +36,7 @@
     },
     "version": "0.9.1",
     "dependencies": {
+        "sdl2": "https://github.com/bsansouci/sdl2.git",
         "@opam-alpha/topkg": "*",
         "@opam-alpha/ctypes-foreign": "*",
         "@opam-alpha/ocamlfind": "*",
