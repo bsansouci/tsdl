@@ -36,6 +36,7 @@
     },
     "version": "0.9.1",
     "dependencies": {
+        "sdl2": "https://github.com/reasonml/SDL-mirror.git#packagejson-2.0.5",
         "@opam-alpha/topkg": "*",
         "@opam-alpha/ctypes-foreign": "*",
         "@opam-alpha/ocamlfind": "*",
