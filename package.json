@@ -2,7 +2,7 @@
     "name": "tsdl-actual", 
     "version": "0.9.1",
     "dependencies": {
-        "sdl2": "https://github.com/bsansouci/SDL-mirror.git#packagejson-2.0.5",
+        "sdl2": "https://github.com/bsansouci/SDL-mirror.git#esy",
         "@opam/topkg": "*",
         "@opam/ctypes-foreign": "*",
         "@opam/ocamlfind": "*",
