@@ -2,15 +2,15 @@
     "name": "tsdl-actual", 
     "version": "0.9.1",
     "dependencies": {
-        "sdl2": "https://github.com/bsansouci/SDL-mirror.git#esy",
+        "sdl2": "bsansouci/SDL-mirror.git#esy",
         "@opam/topkg": "*",
         "@opam/ctypes-foreign": "*",
         "@opam/ocamlfind": "*",
         "@opam/ctypes": ">= 0.9.0",
-        "substs": "https://github.com/yunxing/substs.git",
+        "substs": "yunxing/substs.git",
         "@opam/ocamlbuild": "*",
         "@opam/result": "*",
-        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git"
+        "opam-installer-bin": "yunxing/opam-installer-bin.git"
     },
     "esy": {
       "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"],
