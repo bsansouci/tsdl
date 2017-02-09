@@ -21,7 +21,7 @@
         },
         "FINDLIB": {
             "scope": "global",
-            "val": "$tsdl-actual__target_dir/ocamlfind/lib:$FINDLIB"
+            "val": "$tsdl_actual__target_dir/ocamlfind/lib:$FINDLIB"
         },
         "version": {
             "scope": "global",
@@ -33,7 +33,7 @@
         },
         "PATH": {
             "scope": "global",
-            "val": "$tsdl-actual__target_dir/ocamlfind/bin:$PATH"
+            "val": "$tsdl_actual__target_dir/ocamlfind/bin:$PATH"
         },
         "tsdl_version": {
             "scope": "global",
