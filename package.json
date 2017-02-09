@@ -16,35 +16,27 @@
       "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"],
       "exportedEnvVars": {
         "tsdl_installed": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
+            "scope": "global",
             "val": "true"
         },
         "FINDLIB": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/lib"
+            "scope": "global",
+            "val": "$tsdl-actual__target_dir/ocamlfind/lib:$FINDLIB"
         },
         "version": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
+            "scope": "global",
             "val": "0.9.1"
         },
         "tsdl_enable": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
+            "scope": "global",
             "val": "enable"
         },
         "PATH": {
-            "global": true,
-            "resolveAsRelativePath": true,
-            "globalCollisionBehavior": "joinPath",
-            "val": "./_build/ocamlfind/bin"
+            "scope": "global",
+            "val": "$tsdl-actual__target_dir/ocamlfind/bin:$PATH"
         },
         "tsdl_version": {
-            "global": true,
-            "globalCollisionBehavior": "clobber",
+            "scope": "global",
             "val": "0.9.1"
         }
       }
