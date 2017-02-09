@@ -7,39 +7,13 @@
         "@opam/ctypes-foreign": "*",
         "@opam/ocamlfind": "*",
         "@opam/ctypes": ">= 0.9.0",
-        "substs": "yunxing/substs.git",
+        "substs": "esy-ocaml/substs.git",
         "@opam/ocamlbuild": "*",
         "@opam/result": "*",
-        "opam-installer-bin": "yunxing/opam-installer-bin.git"
+        "opam-installer-bin": "esy-ocaml/opam-installer-bin.git"
     },
     "esy": {
-      "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"],
-      "exportedEnvVars": {
-        "tsdl_installed": {
-            "scope": "global",
-            "val": "true"
-        },
-        "FINDLIB": {
-            "scope": "global",
-            "val": "$tsdl_actual__target_dir/ocamlfind/lib:$FINDLIB"
-        },
-        "version": {
-            "scope": "global",
-            "val": "0.9.1"
-        },
-        "tsdl_enable": {
-            "scope": "global",
-            "val": "enable"
-        },
-        "PATH": {
-            "scope": "global",
-            "val": "$tsdl_actual__target_dir/ocamlfind/bin:$PATH"
-        },
-        "tsdl_version": {
-            "scope": "global",
-            "val": "0.9.1"
-        }
-      }
+      "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"]
     },
     "devDependencies": {
       "ocaml": "esy-ocaml/ocaml#esy"
