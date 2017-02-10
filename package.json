@@ -14,21 +14,7 @@
     },
     "esy": {
       "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"],
-      "buildsInSource": true,
-      "exportedEnv": {
-        "tsdl_actual_version": {
-          "val": "0.9.1",
-          "scope": "global"
-        },
-        "tsdl_actual_enable": {
-          "val": "enable",
-          "scope": "global"
-        },
-        "tsdl_actual_installed": {
-          "val": "true",
-          "scope": "global"
-        }
-      }
+      "buildsInSource": true
     },
     "devDependencies": {
       "ocaml": "esy-ocaml/ocaml#esy"
