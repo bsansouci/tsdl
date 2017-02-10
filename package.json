@@ -13,7 +13,8 @@
         "opam-installer-bin": "esy-ocaml/opam-installer-bin.git"
     },
     "esy": {
-      "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"]
+      "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"],
+      "buildsInSource": true
     },
     "devDependencies": {
       "ocaml": "esy-ocaml/ocaml#esy"
