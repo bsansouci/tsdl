@@ -3,13 +3,13 @@
     "version": "0.9.1",
     "dependencies": {
         "sdl2": "bsansouci/SDL-mirror.git#esy",
-        "@opam/topkg": "*",
-        "@opam/ctypes-foreign": "*",
-        "@opam/ocamlfind": "*",
-        "@opam/ctypes": ">= 0.9.0",
+        "@opam-alpha/topkg": "*",
+        "@opam-alpha/ctypes-foreign": "*",
+        "@opam-alpha/ocamlfind": "*",
+        "@opam-alpha/ctypes": ">= 0.9.0",
         "substs": "esy-ocaml/substs.git",
-        "@opam/ocamlbuild": "*",
-        "@opam/result": "*",
+        "@opam-alpha/ocamlbuild": "*",
+        "@opam-alpha/result": "*",
         "opam-installer-bin": "esy-ocaml/opam-installer-bin.git"
     },
     "esy": {
