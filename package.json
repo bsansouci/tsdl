@@ -13,8 +13,14 @@
         "opam-installer-bin": "esy-ocaml/opam-installer-bin.git"
     },
     "esy": {
-      "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"],
-      "buildsInSource": true
+      "build": ["ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$cur__install || true)"],
+      "buildsInSource": true,
+      "exportedEnv": {
+        "CAML_LD_LIBRARY_PATH": {
+          "scope": "global",
+          "val": "$tsdl_actual__lib/stublibs:$CAML_LD_LIBRARY_PATH"
+        }
+      }
     },
     "devDependencies": {
       "ocaml": "esy-ocaml/ocaml#esy"
