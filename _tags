@@ -20,3 +20,5 @@ true: thread
 <test/{sdlevents,test,min,test_audio}.{native,byte}> : package(ctypes), \
  package(ctypes.foreign), package(result), use_sdl2
 <test/test.byte> : custom
+
+<node_modules>: -traverse
