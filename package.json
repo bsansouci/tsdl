@@ -1,5 +1,5 @@
 {
-    "name": "tsdl-actual",
+    "name": "tsdl",
     "exportedEnvVars": {
         "tsdl_installed": {
             "global": true,
@@ -36,22 +36,9 @@
     },
     "version": "0.9.1",
     "dependencies": {
-        "sdl2": "https://github.com/bsansouci/SDL-mirror.git#packagejson-2.0.5",
-        "@opam-alpha/topkg": "*",
-        "@opam-alpha/ctypes-foreign": "*",
-        "@opam-alpha/ocamlfind": "*",
-        "@opam-alpha/ctypes": ">= 0.9.0",
-        "dependency-env": "https://github.com/npm-ml/dependency-env.git",
-        "substs": "https://github.com/yunxing/substs.git",
-        "@opam-alpha/ocamlbuild": "*",
-        "@opam-alpha/result": "*",
-        "nopam": "https://github.com/yunxing/nopam.git",
-        "opam-installer-bin": "https://github.com/yunxing/opam-installer-bin.git"
-    },
-    "scripts": {
-        "postinstall": "eval $(dependencyEnv) && nopam && ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"
+        "sdl2": "https://github.com/bsansouci/SDL-mirror.git#packagejson-2.0.5"
     },
     "peerDependencies": {
-        "@opam-alpha/ocaml": ">= 4.01.0"
+        "esy/ocaml#esy": ">= 4.01.0"
     }
 }
