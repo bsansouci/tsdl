@@ -4,28 +4,5 @@
     "dir": "src",
     "files": ["tsdl_packed.ml"]
   },
-  "bs-dependencies": ["ctypes"],
-  "static_libraries": [
-    // "node_modules/ctypes-actual/_build/libctypes-foreign-base_stubs.a",
-    // "node_modules/ctypes-actual/_build/libctypes-foreign-threaded_stubs.a",
-    // "node_modules/ctypes-actual/_build/libctypes_stubs.a",
-    // "node_modules/ctypes-actual/_build/ctypes.a",
-    
-    // "node_modules/ctypes-actual/_build/src/ctypes/complex_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/managed_buffer_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/complex_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/ctypes_bigarrays.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/ctypes_roots.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/managed_buffer_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/posix_types_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/raw_pointer_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/type_info_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes/unsigned_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes-foreign-base/dl_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes-foreign-base/ffi_call_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes-foreign-base/ffi_type_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes-foreign-threaded/foreign_threaded_stubs.o",
-    // "node_modules/ctypes-actual/_build/src/ctypes-foreign-base/ffi_type_stubs.o", 
-    // "node_modules/ctypes-actual/_build/src/ctypes-foreign-base/ffi_call_stubs.o",
-  ]
+  "bs-dependencies": ["sdl2", "ctypes"]
 }

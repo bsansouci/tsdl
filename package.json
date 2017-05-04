@@ -36,6 +36,7 @@
     },
     "version": "0.9.1",
     "dependencies": {
+        "ctypes": "bsansouci/ocaml-ctypes#bsb-support",
         "sdl2": "https://github.com/bsansouci/SDL-mirror.git#packagejson-2.0.5"
     },
     "peerDependencies": {
