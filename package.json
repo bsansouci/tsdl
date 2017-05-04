@@ -1,9 +1,6 @@
 {
   "name": "tsdl",
   "version": "0.9.1",
-  "scripts": {
-    "postinstall": "ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"
-  },
   "dependencies": {
     "ctypes": "bsansouci/ocaml-ctypes#bsb-support",
     "sdl2": "bsansouci/SDL-mirror#bsb-support"
