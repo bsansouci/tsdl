@@ -1,43 +1,15 @@
 {
   "name": "tsdl",
-  "exportedEnvVars": {
-    "tsdl_installed": {
-      "global": true,
-      "globalCollisionBehavior": "clobber",
-      "val": "true"
-    },
-    "FINDLIB": {
-      "global": true,
-      "resolveAsRelativePath": true,
-      "globalCollisionBehavior": "joinPath",
-      "val": "./_build/ocamlfind/lib"
-    },
-    "version": {
-      "global": true,
-      "globalCollisionBehavior": "clobber",
-      "val": "0.9.1"
-    },
-    "tsdl_enable": {
-      "global": true,
-      "globalCollisionBehavior": "clobber",
-      "val": "enable"
-    },
-    "PATH": {
-      "global": true,
-      "resolveAsRelativePath": true,
-      "globalCollisionBehavior": "joinPath",
-      "val": "./_build/ocamlfind/bin"
-    },
-    "tsdl_version": {
-      "global": true,
-      "globalCollisionBehavior": "clobber",
-      "val": "0.9.1"
-    }
-  },
   "version": "0.9.1",
+  "scripts": {
+    "postinstall": "ocaml pkg/pkg.ml build --pinned false && (opam-installer --prefix=$opam_prefix || true)"
+  },
   "dependencies": {
     "ctypes": "bsansouci/ocaml-ctypes#bsb-support",
     "sdl2": "bsansouci/SDL-mirror#bsb-support"
+  },
+  "devDependencies": {
+    "bs-platform": "bsansouci/bucklescript#simple-native-compilation"
   },
   "peerDependencies": {
     "esy/ocaml#esy": ">= 4.01.0"
