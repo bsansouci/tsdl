@@ -4,5 +4,6 @@
     "dir": "src",
     "files": ["tsdl_packed.ml"]
   },
-  "bs-dependencies": ["sdl2", "ctypes"]
+  "bs-dependencies": ["sdl2", "ctypes"],
+  "allowed-build-kinds": ["bytecode", "native"],
 }
