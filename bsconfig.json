@@ -2,8 +2,12 @@
   "name": "Tsdl",
   "sources": {
     "dir": "src",
-    "files": ["tsdl_packed.ml"]
+    "files": ["tsdl_new.re"]
   },
-  "bs-dependencies": ["sdl2", "ctypes"],
+  "bs-dependencies": ["sdl2"],
+  "static_libraries": [
+    "tsdl_new.o",
+  ],
+  "build_script": "make",
   "allowed-build-kinds": ["bytecode", "native"],
 }
