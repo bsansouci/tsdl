@@ -70,7 +70,7 @@ type glContextT;
 
 external get_window_size : windowT => (int, int) = "TSDL_GetWindowSize";
 
-external get_window_size : windowT => width::int => height::int => unit = "TSDL_SetWindowSize";
+external set_window_size : windowT => width::int => height::int => unit = "TSDL_SetWindowSize";
 
 module Init = {
   let timer = 1;
