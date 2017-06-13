@@ -14,11 +14,11 @@ CAMLprim value TSDL_GL_SetAttribute(value a, value v) {
 CAMLprim value TSDL_CreateWindow_native(value title, value x, value y, value w, value h, value flags) {
   CAMLparam5(title, x, y, w, h);
   CAMLxparam1(flags);
-  CAMLlocal1(win_ret);
+  CAMLlocal1(ret);
   SDL_Window *window = SDL_CreateWindow(String_val(title), Int_val(x), Int_val(y), Int_val(w), Int_val(h), Int_val(flags));
-  win_ret = caml_alloc_small(1, Abstract_tag);
-  Field(win_ret, 0) = (long)window;
-  CAMLreturn(win_ret);
+  ret = caml_alloc_small(1, Abstract_tag);
+  Field(ret, 0) = (long)window;
+  CAMLreturn(ret);
 }
 
 CAMLprim value TSDL_CreateWindow_bytecode( value * argv, int argn ) {
@@ -39,7 +39,7 @@ CAMLprim value TSDL_GetWindowSize(value window) {
   SDL_GetWindowSize((SDL_Window *)Field(window, 0), &w, &h);
   ret = caml_alloc_small(2, 0);
   Field(ret, 0) = Val_int(w);
-  Field(ret, 1) = Val_int(w);
+  Field(ret, 1) = Val_int(h);
   CAMLreturn(ret);
 }
 

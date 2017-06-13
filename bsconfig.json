@@ -8,6 +8,6 @@
   "static_libraries": [
     "tsdl_new.o",
   ],
-  "build_script": "make",
+  "build_script": "make lib",
   "allowed-build-kinds": ["bytecode", "native"],
 }
