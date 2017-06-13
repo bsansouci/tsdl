@@ -110,13 +110,13 @@ CAMLprim value T_get_mouse_button_y(value event) {
 CAMLprim value T_get_mouse_motion_x(value event) {
   CAMLparam1(event);
   SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->motion.xrel));
+  CAMLreturn(Val_int(e->motion.x));
 }
 
 CAMLprim value T_get_mouse_motion_y(value event) {
   CAMLparam1(event);
   SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->motion.yrel));
+  CAMLreturn(Val_int(e->motion.y));
 }
 
 CAMLprim value T_get_window_event(value event) {
