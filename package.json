@@ -2,7 +2,6 @@
   "name": "tsdl",
   "version": "0.9.1",
   "dependencies": {
-    "ctypes": "bsansouci/ocaml-ctypes#bsb-support",
     "sdl2": "bsansouci/SDL-mirror#bsb-support"
   },
   "peerDependencies": {
