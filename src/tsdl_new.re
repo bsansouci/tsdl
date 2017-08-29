@@ -56,13 +56,9 @@ module Window = {
 /* flags should technically be a full uint32 */
 type windowT;
 
-external create_window : title::string =>
-                         x::int =>
-                         y::int =>
-                         w::int =>
-                         h::int =>
-                         flags::int =>
-                         windowT = "TSDL_CreateWindow_bytecode" "TSDL_CreateWindow_native";
+external create_window :
+  title::string => x::int => y::int => w::int => h::int => flags::int => windowT =
+  "TSDL_CreateWindow_bytecode" "TSDL_CreateWindow_native";
 
 external destroy_window : windowT => unit = "TSDL_DestroyWindow";
 
@@ -101,16 +97,18 @@ module Event = {
   let mousebuttonup = 1026;
   let mousewheel = 1027;
   let quit = 256;
-  type eventT;
+  type eventT = {
+    typ: int,
+    mouse_button_button: int,
+    mouse_button_x: int,
+    mouse_button_y: int,
+    mouse_motion_x: int,
+    mouse_motion_y: int,
+    keyboard_repeat: int,
+    keyboard_keycode: int,
+    window_event_enum: int
+  };
   external poll_event : unit => option eventT = "TSDL_PollEvent";
-  external typ : eventT => int = "T_get_type";
-  external mouse_button_button : eventT => int = "T_get_mouse_button_button";
-  external mouse_button_x : eventT => int = "T_get_mouse_button_x";
-  external mouse_button_y : eventT => int = "T_get_mouse_button_y";
-  external mouse_motion_x : eventT => int = "T_get_mouse_motion_x";
-  external mouse_motion_y : eventT => int = "T_get_mouse_motion_y";
-  external keyboard_repeat : eventT => int = "T_get_keyboard_repeat";
-  external keyboard_keycode : eventT => int = "T_get_keyboard_keycode";
   let window_shown = 1;
   let window_hidden = 2;
   let window_exposed = 3;
@@ -125,14 +123,13 @@ module Event = {
   let window_focus_gained = 12;
   let window_focus_lost = 13;
   let window_close = 14;
-  external window_event_enum : eventT => int = "T_get_window_event";
 };
 
 external get_performance_counter : unit => Int64.t = "TSDL_GetPerformanceCounter";
 
 external get_performance_frequency : unit => Int64.t = "TSDL_GetPerformanceFrequency";
 
-external gl_swap_window : windowT => unit = "TSDL_GL_SwapWindow";
+external gl_swap_window : windowT => unit = "TSDL_GL_SwapWindow" [@@noalloc];
 
 type surfaceT;
 

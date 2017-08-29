@@ -1,6 +1,6 @@
 lib: tsdl_new.o
 
-tsdl_new.o:
+tsdl_new.o: src/tsdl_new.c
 	ocamlopt.opt -c -ccopt -I -ccopt ../sdl2/include/ src/tsdl_new.c
 
 # test:

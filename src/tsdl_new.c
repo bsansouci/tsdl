@@ -70,107 +70,33 @@ CAMLprim value TSDL_GL_MakeCurrent(value window, value context) {
 CAMLprim value TSDL_PollEvent() {
   CAMLparam0();
   CAMLlocal2(ret, wrapped);
-  SDL_Event *event = malloc(sizeof(SDL_Event));
-  int eventAvailable = SDL_PollEvent(event);
+  SDL_Event e;
+  int eventAvailable = SDL_PollEvent(&e);
   if (eventAvailable == 0) {
     CAMLreturn(Val_int(0));
   }
-  ret = caml_alloc_small(1, Abstract_tag);
-  Field(ret, 0) = (long)event;
-
+  // typ: int,
+  //   mouse_button_button: int,
+  //   mouse_button_x: int,
+  //   mouse_button_y: int,
+  //   mouse_motion_x: int,
+  //   mouse_motion_y: int,
+  //   keyboard_repeat: int,
+  //   keyboard_keycode: int
+  ret = caml_alloc_small(9, Abstract_tag);
+  Field(ret, 0) = Val_int(e.type);
+  Field(ret, 1) = Val_int(e.button.button);
+  Field(ret, 2) = Val_int(e.button.x);
+  Field(ret, 3) = Val_int(e.button.y);
+  Field(ret, 4) = Val_int(e.motion.x);
+  Field(ret, 5) = Val_int(e.motion.y);
+  Field(ret, 6) = Val_int(e.key.repeat);
+  Field(ret, 7) = Val_int(e.key.keysym.sym);
+  Field(ret, 8) = Val_int(e.window.event);
+  
   wrapped = caml_alloc_small(1, 0);
   Field(wrapped, 0) = ret;
   CAMLreturn(wrapped);
-}
-
-CAMLprim value T_get_type(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->type));
-}
-
-CAMLprim value T_get_mouse_button_button(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->button.button));
-}
-
-CAMLprim value T_get_mouse_button_x(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->button.x));
-}
-
-CAMLprim value T_get_mouse_button_y(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->button.y));
-}
-
-CAMLprim value T_get_mouse_motion_x(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->motion.x));
-}
-
-CAMLprim value T_get_mouse_motion_y(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->motion.y));
-}
-
-CAMLprim value T_get_window_event(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->window.event));
-  // switch (e->window.event) {
-  //   case SDL_WINDOWEVENT_SHOWN:
-  //       CAMLreturn(hash_variant("Shown"));
-  //   case SDL_WINDOWEVENT_HIDDEN:
-  //       CAMLreturn(hash_variant("Hidden"));
-  //   case SDL_WINDOWEVENT_EXPOSED:
-  //       CAMLreturn(hash_variant("Exposed"));
-  //   case SDL_WINDOWEVENT_MOVED:
-  //       CAMLreturn(hash_variant("Moved"));
-  //   case SDL_WINDOWEVENT_RESIZED:
-  //       CAMLreturn(hash_variant("Resized"));
-  //   case SDL_WINDOWEVENT_SIZE_CHANGED:
-  //       CAMLreturn(hash_variant("Size_changed"));
-  //   case SDL_WINDOWEVENT_MINIMIZED:
-  //       CAMLreturn(hash_variant("Minimized"));
-  //   case SDL_WINDOWEVENT_MAXIMIZED:
-  //       CAMLreturn(hash_variant("Maximized"));
-  //   case SDL_WINDOWEVENT_RESTORED:
-  //       CAMLreturn(hash_variant("Restored"));
-  //   case SDL_WINDOWEVENT_ENTER:
-  //       CAMLreturn(hash_variant("Enter"));
-  //   case SDL_WINDOWEVENT_LEAVE:
-  //       CAMLreturn(hash_variant("Leave"));
-  //   case SDL_WINDOWEVENT_FOCUS_GAINED:
-  //       CAMLreturn(hash_variant("Focus_gained"));
-  //   case SDL_WINDOWEVENT_FOCUS_LOST:
-  //       CAMLreturn(hash_variant("Focus_lost"));
-  //   case SDL_WINDOWEVENT_CLOSE:
-  //       CAMLreturn(hash_variant("Close"));
-  //   default:
-  //   // HEEH
-  //     CAMLreturn(Val_int(0));
-  //       // SDL_Log("Window %d got unknown event %d",
-  //       //         event->window.windowID, event->window.event);
-  //       // break;
-  //   }
-}
-
-CAMLprim value T_get_keyboard_repeat(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->key.repeat));
-}
-
-CAMLprim value T_get_keyboard_keycode(value event) {
-  CAMLparam1(event);
-  SDL_Event *e = (SDL_Event *)Field(event, 0);
-  CAMLreturn(Val_int(e->key.keysym.sym));
 }
 
 CAMLprim value TSDL_GetPerformanceCounter() {
@@ -184,9 +110,7 @@ CAMLprim value TSDL_GetPerformanceFrequency() {
 }
 
 void TSDL_GL_SwapWindow(value window) {
-  CAMLparam1(window);
   SDL_GL_SwapWindow((SDL_Window *)Field(window, 0));
-  CAMLreturn0;
 }
 
 void TSDL_Delay(value delay) {
