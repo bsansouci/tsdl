@@ -3,8 +3,5 @@
   "version": "0.9.1",
   "dependencies": {
     "sdl2": "bsansouci/SDL-mirror#bsb-support"
-  },
-  "peerDependencies": {
-    "@opam-alpha/ocaml": ">= 4.01.0"
   }
 }
