@@ -99,14 +99,13 @@ CAMLprim value TSDL_PollEvent() {
   CAMLreturn(wrapped);
 }
 
-CAMLprim value TSDL_GetPerformanceCounter() {
-  CAMLparam0();
-  CAMLreturn(caml_copy_int64(SDL_GetPerformanceCounter()));
+value TSDL_GetPerformanceCounter() {
+  return SDL_GetPerformanceCounter();
 }
 
-CAMLprim value TSDL_GetPerformanceFrequency() {
-  CAMLparam0();
-  CAMLreturn(caml_copy_int64(SDL_GetPerformanceFrequency()));
+CAMLprim value TGetTimeDiff(value prevTime, value curTime) {
+  CAMLparam2(prevTime, curTime);
+  CAMLreturn(caml_copy_double((double) (((uint64_t)curTime - (uint64_t)prevTime) * 1000) / SDL_GetPerformanceFrequency()));
 }
 
 void TSDL_GL_SwapWindow(value window) {

@@ -125,9 +125,12 @@ module Event = {
   let window_close = 14;
 };
 
-external get_performance_counter : unit => Int64.t = "TSDL_GetPerformanceCounter";
 
-external get_performance_frequency : unit => Int64.t = "TSDL_GetPerformanceFrequency";
+type int64T;
+
+external get_performance_counter : unit => int64T = "TSDL_GetPerformanceCounter" [@@noalloc];
+
+external get_time_diff : int64T => int64T => float = "TGetTimeDiff";
 
 external gl_swap_window : windowT => unit = "TSDL_GL_SwapWindow" [@@noalloc];
 
