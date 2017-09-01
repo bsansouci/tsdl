@@ -187,9 +187,9 @@ CAMLprim value TSDL_GetDisplayDPI(value window) {
   SDL_GetDisplayDPI(index, &ddpi, &hdpi, &vdpi);
   
   ret = caml_alloc_small(3, Double_array_tag);
-  Double_field(ret, 0) = caml_copy_double(ddpi);
-  Double_field(ret, 1) = caml_copy_double(hdpi);
-  Double_field(ret, 2) = caml_copy_double(vdpi);
+  Double_field(ret, 0) = ddpi;
+  Double_field(ret, 1) = hdpi;
+  Double_field(ret, 2) = vdpi;
   
   CAMLreturn(ret);
 }
