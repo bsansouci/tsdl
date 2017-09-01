@@ -164,3 +164,16 @@ CAMLprim value T_or(value a, value b) {
   CAMLparam2(a, b);
   CAMLreturn(Val_int(Int_val(a) | Int_val(b)));
 }
+
+CAMLprim value TSDL_GL_GetDrawableSize(value window) {
+  CAMLparam1(window);
+  CAMLlocal1(ret);
+  int w, h;
+  SDL_GL_GetDrawableSize((SDL_Window *)Field(window, 0), &w, &h);
+
+  ret = caml_alloc_small(2, 0);
+  Field(ret, 0) = Val_int(w);
+  Field(ret, 1) = Val_int(h);
+
+  CAMLreturn(ret);
+}
