@@ -70,6 +70,14 @@ external get_window_size : windowT => (int, int) = "TSDL_GetWindowSize";
 
 external set_window_size : windowT => width::int => height::int => unit = "TSDL_SetWindowSize";
 
+type dpiT = {
+  ddpi: float,
+  hdpi: float,
+  vdpi: float,  
+};
+
+external get_window_dpi : windowT => dpiT = "TSDL_GetDisplayDPI";
+
 module Init = {
   let timer = 1;
   let audio = 16;
