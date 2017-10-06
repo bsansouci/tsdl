@@ -5,9 +5,9 @@
     "files": ["tsdl_new.re"]
   },
   "bs-dependencies": ["sdl2"],
-  "static_libraries": [
+  "static-libraries": [
     "tsdl_new.o",
   ],
-  "build_script": "make lib",
+  "build-script": "make lib",
   "allowed-build-kinds": ["bytecode", "native"],
 }
