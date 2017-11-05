@@ -29,11 +29,11 @@ module Gl = {
   let context_profile_core = 1;
   let context_profile_compatibility = 2;
   let context_profile_es = 4;
-  external gl_set_attribute : attr::int => value::int => int = "TSDL_GL_SetAttribute";
+  external gl_set_attribute : (~attr: int, ~value: int) => int = "TSDL_GL_SetAttribute";
 };
 
 module Window = {
-  external (+) : int => int => int = "T_or";
+  external (+) : (int, int) => int = "T_or";
   let windowed = 0;
   let fullscreen = 1;
   let fullscreen_desktop = 4097;
@@ -57,7 +57,7 @@ module Window = {
 type windowT;
 
 external create_window :
-  title::string => x::int => y::int => w::int => h::int => flags::int => windowT =
+  (~title: string, ~x: int, ~y: int, ~w: int, ~h: int, ~flags: int) => windowT =
   "TSDL_CreateWindow_bytecode" "TSDL_CreateWindow_native";
 
 external destroy_window : windowT => unit = "TSDL_DestroyWindow";
@@ -68,12 +68,12 @@ external get_drawable_size : windowT => (int, int) = "TSDL_GL_GetDrawableSize";
 
 external get_window_size : windowT => (int, int) = "TSDL_GetWindowSize";
 
-external set_window_size : windowT => width::int => height::int => unit = "TSDL_SetWindowSize";
+external set_window_size : (windowT, ~width: int, ~height: int) => unit = "TSDL_SetWindowSize";
 
 type dpiT = {
   ddpi: float,
   hdpi: float,
-  vdpi: float,  
+  vdpi: float
 };
 
 external get_window_dpi : windowT => dpiT = "TSDL_GetDisplayDPI";
@@ -93,7 +93,7 @@ module Init = {
 
 external gl_create_context : windowT => glContextT = "TSDL_GL_CreateContext";
 
-external gl_make_current : windowT => glContextT => int = "TSDL_GL_MakeCurrent";
+external gl_make_current : (windowT, glContextT) => int = "TSDL_GL_MakeCurrent";
 
 module Event = {
   let windowevent = 512;
@@ -118,7 +118,7 @@ module Event = {
     keyboard_keycode: int,
     window_event_enum: int
   };
-  external poll_event : unit => option eventT = "TSDL_PollEvent";
+  external poll_event : unit => option(eventT) = "TSDL_PollEvent";
   let window_shown = 1;
   let window_hidden = 2;
   let window_exposed = 3;
@@ -135,14 +135,13 @@ module Event = {
   let window_close = 14;
 };
 
-
 type int64T;
 
-external get_performance_counter : unit => int64T = "TSDL_GetPerformanceCounter" [@@noalloc];
+[@noalloc] external get_performance_counter : unit => int64T = "TSDL_GetPerformanceCounter";
 
-external get_time_diff : int64T => int64T => float = "TGetTimeDiff";
+external get_time_diff : (int64T, int64T) => float = "TGetTimeDiff";
 
-external gl_swap_window : windowT => unit = "TSDL_GL_SwapWindow" [@@noalloc];
+[@noalloc] external gl_swap_window : windowT => unit = "TSDL_GL_SwapWindow";
 
 type surfaceT;
 
@@ -150,7 +149,7 @@ external get_window_surface : windowT => surfaceT = "TSDL_GetWindowSurface";
 
 external load_bmp : string => surfaceT = "TSDL_LoadBMP";
 
-external blit_surface : surfaceT => surfaceT => int = "TSDL_BlitSurface";
+external blit_surface : (surfaceT, surfaceT) => int = "TSDL_BlitSurface";
 
 external update_window : windowT => int = "TSDL_UpdateWindowSurface";
 
@@ -162,10 +161,10 @@ external quit : unit => unit = "TSDL_Quit";
 
 let a = 10;
 
-let (>>=) t f =>
+let (>>=) = (t, f) =>
   switch t {
-  | 0 => f ()
-  | _ => failwith @@ error ()
+  | 0 => f()
+  | _ => failwith @@ error()
   };
 /*
  /** Main */
