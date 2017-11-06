@@ -1,5 +1,5 @@
 {
-  "name": "tsdl",
+  "name": "Tsdl",
   "version": "0.9.1",
   "dependencies": {
     "sdl2": "bsansouci/SDL-mirror#bsb-support"
