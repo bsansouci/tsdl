@@ -56,6 +56,12 @@ module Window = {
 /* flags should technically be a full uint32 */
 type windowT;
 
+type soundT;
+
+external load_audio : (windowT, string) => soundT = "TSDL_LoadAudioFile";
+
+external play_audio : (windowT, soundT, ~volume: float, ~loop: bool) => unit = "TSDL_PlayAudio";
+
 external create_window :
   (~title: string, ~x: int, ~y: int, ~w: int, ~h: int, ~flags: int) => windowT =
   "TSDL_CreateWindow_bytecode" "TSDL_CreateWindow_native";
