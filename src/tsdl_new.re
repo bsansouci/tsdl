@@ -72,6 +72,8 @@ type glContextT;
 
 external get_drawable_size : windowT => (int, int) = "TSDL_GL_GetDrawableSize";
 
+external get_window_max_size : windowT => (int, int) = "TSDL_GetWindowMaximumSize";
+
 external get_window_size : windowT => (int, int) = "TSDL_GetWindowSize";
 
 external set_window_size : (windowT, ~width: int, ~height: int) => unit = "TSDL_SetWindowSize";

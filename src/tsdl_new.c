@@ -381,3 +381,15 @@ CAMLprim value TSDL_GetDisplayDPI(value window) {
   CAMLreturn(ret);
 }
 
+CAMLprim value TSDL_GetWindowMaximumSize(value window) {
+  CAMLparam1(window);
+  CAMLlocal1(ret);
+  int w, h;
+  SDL_GetWindowMaximumSize((SDL_Window *)Field(window, 0), &w, &h);
+
+  ret = caml_alloc_small(2, 0);
+  Field(ret, 0) = Val_int(w);
+  Field(ret, 1) = Val_int(h);
+
+  CAMLreturn(ret);
+}
