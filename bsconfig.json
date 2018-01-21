@@ -6,9 +6,9 @@
   },
   "bs-dependencies": ["sdl2"],
   "static-libraries": [
-    "tsdl_new.o",
+    "lib/tsdl_new.o",
   ],
-  "build-script": "make lib",
+  "build-script": "build_script.re",
   "allowed-build-kinds": ["bytecode", "native"],
   "refmt": 3,
 }
