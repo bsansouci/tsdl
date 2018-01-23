@@ -4,7 +4,7 @@
 #include <caml/mlvalues.h>
 #include <caml/fail.h>
 
-#include <SDL2/SDL.h>
+#include "SDL2/SDL.h"
 
 CAMLprim value TSDL_GL_SetAttribute(value a, value v) {
   CAMLparam2(a, v);
@@ -269,7 +269,8 @@ CAMLprim value TSDL_PollEvent() {
   //   mouse_motion_x: int,
   //   mouse_motion_y: int,
   //   keyboard_repeat: int,
-  //   keyboard_keycode: int
+  //   keyboard_keycode: int32
+  //   window_event_enum: int
   ret = caml_alloc_small(9, Abstract_tag);
   Field(ret, 0) = Val_int(e.type);
   Field(ret, 1) = Val_int(e.button.button);
@@ -278,9 +279,9 @@ CAMLprim value TSDL_PollEvent() {
   Field(ret, 4) = Val_int(e.motion.x);
   Field(ret, 5) = Val_int(e.motion.y);
   Field(ret, 6) = Val_int(e.key.repeat);
-  Field(ret, 7) = Val_int(e.key.keysym.sym);
+  Field(ret, 7) = caml_copy_int32(e.key.keysym.sym);
   Field(ret, 8) = Val_int(e.window.event);
-  
+
   wrapped = caml_alloc_small(1, 0);
   Field(wrapped, 0) = ret;
   CAMLreturn(wrapped);

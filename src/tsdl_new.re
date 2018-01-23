@@ -123,7 +123,7 @@ module Event = {
     mouse_motion_x: int,
     mouse_motion_y: int,
     keyboard_repeat: int,
-    keyboard_keycode: int,
+    keyboard_keycode: Int32.t,
     window_event_enum: int
   };
   external poll_event : unit => option(eventT) = "TSDL_PollEvent";
