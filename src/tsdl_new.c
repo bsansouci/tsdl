@@ -123,11 +123,6 @@ PrivateAudioDevice* initAudio(){
       caml_failwith("SDL_INIT_AUDIO not initialized");
   }
 
-  if((gDevice->device = SDL_OpenAudioDevice(NULL, 0, &(gDevice->want), NULL, SDL_AUDIO_ALLOW_CHANGES)) == 0) {
-    fprintf(stderr, "[%s: %d]Warning: failed to open audio device: %s\n", __FILE__, __LINE__, SDL_GetError());
-    caml_failwith("Failed to open audio device");
-  }
-
   (gDevice->want).freq = AUDIO_FREQUENCY;
   (gDevice->want).format = AUDIO_FORMAT;
   (gDevice->want).channels = AUDIO_CHANNELS;
