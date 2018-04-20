@@ -201,6 +201,11 @@ CAMLprim value TSDL_CreateWindow_native(value title, value x, value y, value w, 
   CAMLxparam1(flags);
   CAMLlocal1(ret);
   SDL_Window *window = SDL_CreateWindow(String_val(title), Int_val(x), Int_val(y), Int_val(w), Int_val(h), Int_val(flags));
+  if (window == NULL) {
+    fprintf(stderr, "[%s: %d]Error: Failed to create SDL window: %s\n",
+            __FILE__, __LINE__, SDL_GetError());
+    caml_failwith("Failed to create SDL window");
+  }
   PrivateAudioDevice * device = initAudio();
   ret = caml_alloc_small(2, Abstract_tag);
   Field(ret, 0) = (long)window;
