@@ -246,7 +246,14 @@ CAMLprim value TSDL_GL_CreateContext(value window) {
   CAMLparam1(window);
   CAMLlocal1(ret);
   ret = caml_alloc_small(1, Abstract_tag);
-  Field(ret, 0) = (long)SDL_GL_CreateContext((SDL_Window *)Field(window, 0));
+  void *context = SDL_GL_CreateContext((SDL_Window *)Field(window, 0));
+  if (context == NULL) {
+    const char *sdl_error =  SDL_GetError();
+    char err[512 + strlen(sdl_error)];
+    sprintf(err, "[%s: %d]Error: Failed to create SDL context: %s\n", __FILE__, __LINE__, sdl_error);
+    caml_failwith(err);
+  }
+  Field(ret, 0) = (long)context;
   CAMLreturn(ret);
 }
 
@@ -318,6 +325,12 @@ CAMLprim value TSDL_GetWindowSurface(value window) {
   CAMLlocal1(ret);
   ret = caml_alloc_small(1, Abstract_tag);
   SDL_Surface *s = SDL_GetWindowSurface((SDL_Window *)Field(window, 0));
+  if (s == NULL) {
+    const char *sdl_error =  SDL_GetError();
+    char err[512 + strlen(sdl_error)];
+    sprintf(err, "[%s: %d]Error: Failed to get the SDL surface: %s\n", __FILE__, __LINE__, sdl_error);
+    caml_failwith(err);
+  }
   Field(ret, 0) = (long)s;
   CAMLreturn(ret);
 }
