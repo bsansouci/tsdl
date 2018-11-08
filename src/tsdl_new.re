@@ -86,6 +86,8 @@ type dpiT = {
 
 external get_window_dpi : windowT => dpiT = "TSDL_GetDisplayDPI";
 
+external show_cursor : int => int = "TSDL_ShowCursor";
+
 module Init = {
   let timer = 1;
   let audio = 16;
@@ -166,6 +168,11 @@ external error : unit => string = "TSDL_GetError";
 external delay : int => unit = "TSDL_Delay";
 
 external quit : unit => unit = "TSDL_Quit";
+
+let sdl_query = -1;
+let sdl_disable = 0;
+let sdl_ignore = 0;
+let sdl_enable = 1;
 
 let a = 10;
 

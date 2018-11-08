@@ -383,16 +383,16 @@ CAMLprim value TSDL_GL_GetDrawableSize(value window) {
 CAMLprim value TSDL_GetDisplayDPI(value window) {
   CAMLparam1(window);
   CAMLlocal1(ret);
-  
+
   float ddpi, hdpi, vdpi;
   int index = SDL_GetWindowDisplayIndex((SDL_Window *)Field(window, 0));
   SDL_GetDisplayDPI(index, &ddpi, &hdpi, &vdpi);
-  
+
   ret = caml_alloc_small(3, Double_array_tag);
   Double_field(ret, 0) = ddpi;
   Double_field(ret, 1) = hdpi;
   Double_field(ret, 2) = vdpi;
-  
+
   CAMLreturn(ret);
 }
 
@@ -407,4 +407,10 @@ CAMLprim value TSDL_GetWindowMaximumSize(value window) {
   Field(ret, 1) = Val_int(h);
 
   CAMLreturn(ret);
+}
+
+CAMLprim value TSDL_ShowCursor(value toggle) {
+  CAMLparam1(toggle);
+  int visible = SDL_ShowCursor(Int_val(toggle));
+  CAMLreturn(Val_int(visible));
 }
