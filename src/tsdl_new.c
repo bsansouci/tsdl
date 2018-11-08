@@ -414,3 +414,17 @@ CAMLprim value TSDL_ShowCursor(value toggle) {
   int visible = SDL_ShowCursor(Int_val(toggle));
   CAMLreturn(Val_int(visible));
 }
+
+CAMLprim value TSDL_CreateColorCursor(value surface, value hot_x, value hot_y) {
+  CAMLparam3(surface, hot_x, hot_y);
+  CAMLlocal1(ret);
+  ret = caml_alloc_small(1, Abstract_tag);
+  Field(ret, 0) = (long)SDL_CreateColorCursor((SDL_Surface *)Field(surface, 0), Int_val(hot_x), Int_val(hot_y));
+  CAMLreturn(ret);
+}
+
+void TSDL_SetCursor(value cursor) {
+  CAMLparam1(cursor);
+  SDL_SetCursor((SDL_Cursor *)Field(cursor, 0));
+  CAMLreturn0;
+}
