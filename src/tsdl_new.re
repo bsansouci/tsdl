@@ -86,6 +86,12 @@ type dpiT = {
 
 external get_window_dpi : windowT => dpiT = "TSDL_GetDisplayDPI";
 
+type surfaceT;
+type cursorT;
+
+external set_cursor : cursorT => unit = "TSDL_SetCursor";
+external create_color_cursor : (surfaceT, int, int) => cursorT = "TSDL_CreateColorCursor";
+
 module Init = {
   let timer = 1;
   let audio = 16;
@@ -150,8 +156,6 @@ type int64T;
 external get_time_diff : (int64T, int64T) => float = "TGetTimeDiff";
 
 [@noalloc] external gl_swap_window : windowT => unit = "TSDL_GL_SwapWindow";
-
-type surfaceT;
 
 external get_window_surface : windowT => surfaceT = "TSDL_GetWindowSurface";
 
