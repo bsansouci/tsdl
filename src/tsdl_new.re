@@ -89,6 +89,7 @@ external get_window_dpi : windowT => dpiT = "TSDL_GetDisplayDPI";
 type surfaceT;
 type cursorT;
 
+external show_cursor : int => int = "TSDL_ShowCursor";
 external set_cursor : cursorT => unit = "TSDL_SetCursor";
 external create_color_cursor : (surfaceT, int, int) => cursorT = "TSDL_CreateColorCursor";
 
@@ -170,6 +171,11 @@ external error : unit => string = "TSDL_GetError";
 external delay : int => unit = "TSDL_Delay";
 
 external quit : unit => unit = "TSDL_Quit";
+
+let sdl_query = -1;
+let sdl_disable = 0;
+let sdl_ignore = 0;
+let sdl_enable = 1;
 
 let a = 10;
 

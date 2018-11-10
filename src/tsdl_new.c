@@ -409,6 +409,12 @@ CAMLprim value TSDL_GetWindowMaximumSize(value window) {
   CAMLreturn(ret);
 }
 
+CAMLprim value TSDL_ShowCursor(value toggle) {
+  CAMLparam1(toggle);
+  int visible = SDL_ShowCursor(Int_val(toggle));
+  CAMLreturn(Val_int(visible));
+}
+
 CAMLprim value TSDL_CreateColorCursor(value surface, value hot_x, value hot_y) {
   CAMLparam3(surface, hot_x, hot_y);
   CAMLlocal1(ret);
