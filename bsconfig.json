@@ -5,9 +5,6 @@
     "files": ["tsdl_new.re"]
   },
   "bs-dependencies": ["sdl2"],
-  "static-libraries": [
-    "lib/tsdl_new.o",
-  ],
   "build-script": "build_script.re",
   "allowed-build-kinds": ["bytecode", "native"],
   "refmt": 3,
