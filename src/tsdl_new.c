@@ -237,6 +237,12 @@ void TSDL_SetWindowSize(value window, value w, value h) {
   CAMLreturn0;
 }
 
+void TSDL_SetWindowTitle(value window, value title) {
+  CAMLparam2(window, title);
+  SDL_SetWindowTitle((SDL_Window *)Field(window, 0), String_val(title));
+  CAMLreturn0;
+}
+
 CAMLprim value TSDL_Init(value flags) {
   CAMLparam1(flags);
   CAMLreturn(Val_int(SDL_Init(Int_val(flags))));
