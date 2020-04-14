@@ -1,6 +1,6 @@
 {
   "name": "tsdl",
-  "version": "0.9.1",
+  "version": "1.0.0",
   "dependencies": {
     "sdl2": "bsansouci/SDL-mirror#fast"
   }
