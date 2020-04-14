@@ -1,0 +1,2 @@
+build tsdl_new.o: cc $src_root_dir/src/tsdl_new.c
+  extra_args = -I $root_project_dir/node_modules/sdl2/include
