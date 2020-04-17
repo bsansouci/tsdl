@@ -1,7 +1,7 @@
 {
-  "name": "tsdl",
-  "version": "1.0.0",
+  "name": "@bsansouci/tsdl",
+  "version": "1.0.1",
   "dependencies": {
-    "sdl2": "bsansouci/SDL-mirror#fast"
+    "sdl2": "bsansouci/SDL-mirror"
   }
 }
