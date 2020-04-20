@@ -1,5 +1,5 @@
 {
-  "name": "Tsdl",
+  "name": "@bsansouci/tsdl",
   "sources": {
     "dir": "src",
     "files": ["tsdl_new.re"]
